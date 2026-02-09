@@ -1,3 +1,4 @@
 2026-02-07T22:07:35 add pyproject and license
 2026-02-08T09:57:51 init project structure
 2026-02-09T12:15:47 harden validation paths
+2026-02-09T20:36:24 bootstrap package skeleton
