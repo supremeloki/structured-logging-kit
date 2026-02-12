@@ -5,3 +5,4 @@
 2026-02-10T19:01:52 handle empty input edge case
 2026-02-11T12:29:34 wire internal state machine
 2026-02-11T20:48:54 refactor module boundaries
+2026-02-12T19:55:58 add dataclass contracts
