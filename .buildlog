@@ -7,3 +7,4 @@
 2026-02-11T20:48:54 refactor module boundaries
 2026-02-12T19:55:58 add dataclass contracts
 2026-02-12T19:57:23 implement core engine
+2026-02-13T22:02:23 extract result type
