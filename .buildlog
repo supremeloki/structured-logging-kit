@@ -13,3 +13,4 @@
 2026-02-14T20:17:53 implement core engine pt2
 2026-02-15T19:19:59 extract result type pt2
 2026-02-16T17:05:46 add dataclass contracts pt2
+2026-02-17T18:24:59 refactor module boundaries pt2
