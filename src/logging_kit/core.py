@@ -41,3 +41,6 @@ def redact(value: Any, patterns: tuple[str, ...] = DEFAULT_REDACT_PATTERNS) -> A
             key_text = str(key).lower()
             if any(pattern in key_text for pattern in lowered_patterns):
                 cleaned[key] = REDACTED_PLACEHOLDER
+            else:
+                cleaned[key] = redact(item, patterns)
+        return cleaned
