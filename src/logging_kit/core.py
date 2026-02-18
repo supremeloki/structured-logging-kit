@@ -44,3 +44,5 @@ def redact(value: Any, patterns: tuple[str, ...] = DEFAULT_REDACT_PATTERNS) -> A
             else:
                 cleaned[key] = redact(item, patterns)
         return cleaned
+    if isinstance(value, list):
+        return [redact(item, patterns) for item in value]
