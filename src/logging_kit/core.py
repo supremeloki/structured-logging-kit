@@ -52,3 +52,5 @@ def redact(value: Any, patterns: tuple[str, ...] = DEFAULT_REDACT_PATTERNS) -> A
 
 
 @dataclass(frozen=True)
+class LogRecord:
+    timestamp: float

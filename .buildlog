@@ -18,3 +18,4 @@
 2026-02-18T12:25:44 introduce typed error hierarchy pt2
 2026-02-19T23:03:28 add dataclass contracts pt2
 2026-02-20T21:02:59 implement core engine pt2
+2026-02-20T22:54:06 handle empty input edge case pt2
