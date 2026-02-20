@@ -49,3 +49,6 @@ def redact(value: Any, patterns: tuple[str, ...] = DEFAULT_REDACT_PATTERNS) -> A
     if isinstance(value, tuple):
         return tuple(redact(item, patterns) for item in value)
     return value
+
+
+@dataclass(frozen=True)
