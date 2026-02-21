@@ -57,3 +57,6 @@ class LogRecord:
     level: LogLevel
     event: str
     fields: dict[str, Any]
+
+    def to_dict(self, *, redact_patterns: tuple[str, ...] = DEFAULT_REDACT_PATTERNS,
+                include_level_label: bool = True) -> dict[str, Any]:
