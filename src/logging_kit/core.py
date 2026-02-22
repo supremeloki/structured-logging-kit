@@ -63,3 +63,5 @@ class LogRecord:
         payload = redact(dict(self.fields), redact_patterns)
         record: dict[str, Any] = {
             "ts": round(self.timestamp, 3),
+            "level": self.level.label if include_level_label else int(self.level),
+            "event": self.event,
