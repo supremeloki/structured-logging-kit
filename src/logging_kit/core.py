@@ -60,3 +60,6 @@ class LogRecord:
 
     def to_dict(self, *, redact_patterns: tuple[str, ...] = DEFAULT_REDACT_PATTERNS,
                 include_level_label: bool = True) -> dict[str, Any]:
+        payload = redact(dict(self.fields), redact_patterns)
+        record: dict[str, Any] = {
+            "ts": round(self.timestamp, 3),
