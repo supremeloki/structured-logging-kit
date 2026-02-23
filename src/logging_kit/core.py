@@ -65,3 +65,6 @@ class LogRecord:
             "ts": round(self.timestamp, 3),
             "level": self.level.label if include_level_label else int(self.level),
             "event": self.event,
+        }
+        record.update(payload)
+        return record
