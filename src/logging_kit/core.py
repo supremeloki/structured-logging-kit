@@ -71,3 +71,5 @@ class LogRecord:
 
     def to_json(self, **options: Any) -> str:
         return json.dumps(self.to_dict(**options), sort_keys=True, default=str)
+
+
