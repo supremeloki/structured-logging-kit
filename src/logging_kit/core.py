@@ -73,3 +73,6 @@ class LogRecord:
         return json.dumps(self.to_dict(**options), sort_keys=True, default=str)
 
 
+class LogSink:
+    def write(self, record: LogRecord) -> None:
+        raise NotImplementedError

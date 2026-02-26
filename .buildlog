@@ -26,3 +26,4 @@
 2026-02-23T10:48:24 add cli entrypoint
 2026-02-24T14:38:00 add streaming path
 2026-02-25T14:28:38 support multiple sources
+2026-02-26T22:39:43 extend public api surface
