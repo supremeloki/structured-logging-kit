@@ -76,3 +76,6 @@ class LogRecord:
 class LogSink:
     def write(self, record: LogRecord) -> None:
         raise NotImplementedError
+
+
+class InMemorySink(LogSink):
