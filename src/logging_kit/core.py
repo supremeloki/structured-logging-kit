@@ -81,3 +81,6 @@ class LogSink:
 class InMemorySink(LogSink):
     def __init__(self) -> None:
         self.records: list[LogRecord] = []
+
+    def write(self, record: LogRecord) -> None:
+        self.records.append(record)
