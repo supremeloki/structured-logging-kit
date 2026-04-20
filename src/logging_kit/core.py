@@ -84,3 +84,6 @@ class InMemorySink(LogSink):
 
     def write(self, record: LogRecord) -> None:
         self.records.append(record)
+
+    @property
+    def events(self) -> tuple[str, ...]:
