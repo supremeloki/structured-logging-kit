@@ -87,3 +87,5 @@ class InMemorySink(LogSink):
 
     @property
     def events(self) -> tuple[str, ...]:
+        return tuple(record.event for record in self.records)
+
