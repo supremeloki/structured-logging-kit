@@ -89,3 +89,6 @@ class InMemorySink(LogSink):
     def events(self) -> tuple[str, ...]:
         return tuple(record.event for record in self.records)
 
+    def clear(self) -> None:
+        self.records.clear()
+
