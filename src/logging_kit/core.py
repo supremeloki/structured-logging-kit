@@ -92,3 +92,6 @@ class InMemorySink(LogSink):
     def clear(self) -> None:
         self.records.clear()
 
+
+class JsonlFileSink(LogSink):
+    def __init__(self, path: Any) -> None:
