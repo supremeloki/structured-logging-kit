@@ -95,3 +95,5 @@ class InMemorySink(LogSink):
 
 class JsonlFileSink(LogSink):
     def __init__(self, path: Any) -> None:
+        from pathlib import Path
+
