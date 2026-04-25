@@ -100,3 +100,6 @@ class JsonlFileSink(LogSink):
         self._path = Path(path)
         self._path.parent.mkdir(parents=True, exist_ok=True)
 
+    def write(self, record: LogRecord) -> None:
+        with open(self._path, "a", encoding="utf-8") as handle:
+            handle.write(record.to_json() + "\n")
