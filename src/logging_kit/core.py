@@ -97,3 +97,6 @@ class JsonlFileSink(LogSink):
     def __init__(self, path: Any) -> None:
         from pathlib import Path
 
+        self._path = Path(path)
+        self._path.parent.mkdir(parents=True, exist_ok=True)
+
