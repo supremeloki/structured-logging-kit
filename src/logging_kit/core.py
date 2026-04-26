@@ -106,3 +106,5 @@ class JsonlFileSink(LogSink):
 
     def read_lines(self) -> list[dict[str, Any]]:
         if not self._path.exists():
+            return []
+        lines: list[dict[str, Any]] = []
