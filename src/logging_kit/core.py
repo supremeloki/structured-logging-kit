@@ -103,3 +103,6 @@ class JsonlFileSink(LogSink):
     def write(self, record: LogRecord) -> None:
         with open(self._path, "a", encoding="utf-8") as handle:
             handle.write(record.to_json() + "\n")
+
+    def read_lines(self) -> list[dict[str, Any]]:
+        if not self._path.exists():
