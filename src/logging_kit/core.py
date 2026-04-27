@@ -108,3 +108,6 @@ class JsonlFileSink(LogSink):
         if not self._path.exists():
             return []
         lines: list[dict[str, Any]] = []
+        for raw in self._path.read_text(encoding="utf-8").splitlines():
+            if raw.strip():
+                lines.append(json.loads(raw))
