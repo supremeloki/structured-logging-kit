@@ -111,3 +111,6 @@ class JsonlFileSink(LogSink):
         for raw in self._path.read_text(encoding="utf-8").splitlines():
             if raw.strip():
                 lines.append(json.loads(raw))
+        return lines
+
+
