@@ -79,3 +79,5 @@ def test_unbind_removes_key(logger, sink):
 def test_redaction_masks_sensitive_keys(logger, sink):
     logger.info("auth.attempt",
                 password="hunter2",
+                api_key="sk-secret",
+                username="koor")
