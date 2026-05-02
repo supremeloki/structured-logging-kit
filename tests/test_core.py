@@ -81,3 +81,5 @@ def test_redaction_masks_sensitive_keys(logger, sink):
                 password="hunter2",
                 api_key="sk-secret",
                 username="koor")
+    payload = sink.records[0].to_dict()
+    assert payload["password"] == "***REDACTED***"
