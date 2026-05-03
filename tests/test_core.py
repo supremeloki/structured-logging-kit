@@ -87,3 +87,4 @@ def test_redaction_masks_sensitive_keys(logger, sink):
     assert payload["username"] == "koor"
 
 
+def test_redaction_nested_structures():
