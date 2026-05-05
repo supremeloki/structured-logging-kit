@@ -92,3 +92,5 @@ def test_redaction_nested_structures():
         "config": {"db_password": "x", "host": "db.local"},
         "tokens": ["keep", "also-keep"],
     }
+    cleaned = redact(nested)
+    assert cleaned["config"]["db_password"] == "***REDACTED***"

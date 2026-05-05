@@ -49,3 +49,4 @@
 2026-05-03T22:58:28 test grouping edge cases
 2026-05-04T13:19:08 fix off-by-one in chunker
 2026-05-05T10:49:34 test streaming backpressure
+2026-05-05T18:35:12 regression test for parser
