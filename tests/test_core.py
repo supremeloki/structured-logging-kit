@@ -90,3 +90,5 @@ def test_redaction_masks_sensitive_keys(logger, sink):
 def test_redaction_nested_structures():
     nested = {
         "config": {"db_password": "x", "host": "db.local"},
+        "tokens": ["keep", "also-keep"],
+    }
