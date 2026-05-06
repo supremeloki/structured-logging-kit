@@ -94,3 +94,5 @@ def test_redaction_nested_structures():
     }
     cleaned = redact(nested)
     assert cleaned["config"]["db_password"] == "***REDACTED***"
+    assert cleaned["config"]["host"] == "db.local"
+
