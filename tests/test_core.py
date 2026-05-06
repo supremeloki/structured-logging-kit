@@ -96,3 +96,5 @@ def test_redaction_nested_structures():
     assert cleaned["config"]["db_password"] == "***REDACTED***"
     assert cleaned["config"]["host"] == "db.local"
 
+
+def test_json_line_is_parseable(logger, sink):
