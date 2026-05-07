@@ -99,3 +99,5 @@ def test_redaction_nested_structures():
 
 def test_json_line_is_parseable(logger, sink):
     import json
+
+    logger.warning("json.check", count=3)
