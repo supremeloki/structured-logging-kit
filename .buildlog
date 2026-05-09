@@ -55,3 +55,4 @@
 2026-05-07T21:30:16 expand unit coverage
 2026-05-07T23:44:14 test grouping edge cases pt2
 2026-05-08T20:12:02 fix flaky ordering in tests pt2
+2026-05-09T13:37:35 regression test for parser pt2

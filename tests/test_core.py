@@ -103,3 +103,5 @@ def test_json_line_is_parseable(logger, sink):
     logger.warning("json.check", count=3)
     parsed = json.loads(sink.records[0].to_json())
     assert parsed["count"] == 3
+
+
