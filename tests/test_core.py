@@ -105,3 +105,5 @@ def test_json_line_is_parseable(logger, sink):
     assert parsed["count"] == 3
 
 
+def test_timed_context_logs_duration(logger, sink):
+    with logger.timed("job.run", threshold_ms=1_000_000):
