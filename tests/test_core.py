@@ -107,3 +107,5 @@ def test_json_line_is_parseable(logger, sink):
 
 def test_timed_context_logs_duration(logger, sink):
     with logger.timed("job.run", threshold_ms=1_000_000):
+        pass
+    record = sink.records[0]

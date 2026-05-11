@@ -57,3 +57,4 @@
 2026-05-08T20:12:02 fix flaky ordering in tests pt2
 2026-05-09T13:37:35 regression test for parser pt2
 2026-05-10T19:12:26 guard against missing header row pt2
+2026-05-11T12:16:23 fix off-by-one in chunker pt2
