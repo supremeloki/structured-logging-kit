@@ -59,3 +59,4 @@
 2026-05-10T19:12:26 guard against missing header row pt2
 2026-05-11T12:16:23 fix off-by-one in chunker pt2
 2026-05-11T18:40:48 cover error branches pt2
+2026-05-12T13:44:03 cover error branches pt2

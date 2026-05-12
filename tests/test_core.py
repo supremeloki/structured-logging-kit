@@ -111,3 +111,4 @@ def test_timed_context_logs_duration(logger, sink):
     record = sink.records[0]
     assert record.event == "job.run"
     assert record.fields["duration_ms"] >= 0
+    assert record.level is LogLevel.INFO
