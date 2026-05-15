@@ -114,3 +114,5 @@ def test_timed_context_logs_duration(logger, sink):
     assert record.level is LogLevel.INFO
 
 
+def test_timed_slow_becomes_warning(logger, sink):
+    with logger.timed("slow.job", threshold_ms=-1.0):
