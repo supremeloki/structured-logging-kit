@@ -118,3 +118,5 @@ def test_timed_slow_becomes_warning(logger, sink):
     with logger.timed("slow.job", threshold_ms=-1.0):
         pass
     assert sink.records[0].level is LogLevel.WARNING
+
+
