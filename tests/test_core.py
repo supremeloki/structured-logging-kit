@@ -120,3 +120,5 @@ def test_timed_slow_becomes_warning(logger, sink):
     assert sink.records[0].level is LogLevel.WARNING
 
 
+def test_jsonl_file_sink_roundtrip(tmp_path, logger):
+    file_sink = JsonlFileSink(tmp_path / "logs" / "app.jsonl")
