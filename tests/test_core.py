@@ -123,3 +123,5 @@ def test_timed_slow_becomes_warning(logger, sink):
 def test_jsonl_file_sink_roundtrip(tmp_path, logger):
     file_sink = JsonlFileSink(tmp_path / "logs" / "app.jsonl")
     logger.sink = file_sink
+    logger.info("persisted", value=9)
+    lines = file_sink.read_lines()
