@@ -125,3 +125,5 @@ def test_jsonl_file_sink_roundtrip(tmp_path, logger):
     logger.sink = file_sink
     logger.info("persisted", value=9)
     lines = file_sink.read_lines()
+    assert len(lines) == 1
+    assert lines[0]["event"] == "persisted"
