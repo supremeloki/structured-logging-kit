@@ -129,3 +129,5 @@ def test_jsonl_file_sink_roundtrip(tmp_path, logger):
     assert lines[0]["event"] == "persisted"
     assert lines[0]["value"] == 9
 
+
+def test_default_fields_merged(logger, sink):
