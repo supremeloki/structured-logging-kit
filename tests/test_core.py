@@ -131,3 +131,5 @@ def test_jsonl_file_sink_roundtrip(tmp_path, logger):
 
 
 def test_default_fields_merged(logger, sink):
+    enriched = StructuredLogger(
+        "svc", sink=sink, default_fields={"env": "prod"}, clock=FakeClock(),
