@@ -135,3 +135,4 @@ def test_default_fields_merged(logger, sink):
         "svc", sink=sink, default_fields={"env": "prod"}, clock=FakeClock(),
     )
     enriched.info("hello")
+    assert sink.records[-1].fields["env"] == "prod"
