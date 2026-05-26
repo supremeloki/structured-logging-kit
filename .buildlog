@@ -76,3 +76,4 @@
 2026-05-23T17:41:32 add architecture notes pt2
 2026-05-24T09:13:44 finalize readme pt2
 2026-05-25T17:33:48 prepare release notes
+2026-05-26T17:06:34 perf: avoid re-parsing rows
