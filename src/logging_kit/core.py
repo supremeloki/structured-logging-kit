@@ -114,3 +114,88 @@ class JsonlFileSink(LogSink):
         return lines
 
 
+class StdoutSink(LogSink):
+    def write(self, record: LogRecord) -> None:
+        sys.stdout.write(record.to_json() + "\n")
+
+
+class StructuredLogger:
+    def __init__(self, service_name: str,
+                 sink: LogSink | None = None,
+                 min_level: LogLevel = LogLevel.DEBUG,
+                 default_fields: dict[str, Any] | None = None,
+                 clock: Callable[[], float] | None = None) -> None:
+        self.service_name = service_name
+        self.sink = sink or InMemorySink()
+        self.min_level = min_level
+        self.default_fields = dict(default_fields or {})
+        self._clock = clock or time.time
+        self._context: dict[str, Any] = {}
+
+    def bind(self, **fields: Any) -> "StructuredLogger":
+        self._context.update(fields)
+        return self
+
+    def unbind(self, *keys: str) -> "StructuredLogger":
+        for key in keys:
+            self._context.pop(key, None)
+        return self
+
+    @contextmanager
+    def bound(self, **fields: Any) -> Iterator["StructuredLogger"]:
+        saved = dict(self._context)
+        self.bind(**fields)
+        try:
+            yield self
+        finally:
+            self._context.clear()
+            self._context.update(saved)
+
+    def _emit(self, level: LogLevel, event: str,
+              extra: dict[str, Any]) -> LogRecord:
+        merged = {**self.default_fields, **self._context, **extra}
+        record = LogRecord(
+            timestamp=self._clock(),
+            level=level,
+            event=event,
+            fields={"service": self.service_name, **merged},
+        )
+        self.sink.write(record)
+        return record
+
+    def log(self, level: LogLevel, event: str, **fields: Any) -> LogRecord | None:
+        if level.value < self.min_level.value:
+            return None
+        return self._emit(level, event, fields)
+
+    def debug(self, event: str, **fields: Any) -> LogRecord | None:
+        return self.log(LogLevel.DEBUG, event, **fields)
+
+    def info(self, event: str, **fields: Any) -> LogRecord | None:
+        return self.log(LogLevel.INFO, event, **fields)
+
+    def warning(self, event: str, **fields: Any) -> LogRecord | None:
+        return self.log(LogLevel.WARNING, event, **fields)
+
+    def error(self, event: str, **fields: Any) -> LogRecord | None:
+        return self.log(LogLevel.ERROR, event, **fields)
+
+    def critical(self, event: str, **fields: Any) -> LogRecord | None:
+        return self.log(LogLevel.CRITICAL, event, **fields)
+
+    @contextmanager
+    def timed(self, event: str, threshold_ms: float | None = None,
+              **static_fields: Any) -> Iterator[Any]:
+        class Timer:
+            elapsed_ms: float = 0.0
+
+        started = time.perf_counter()
+        timer = Timer()
+        try:
+            yield timer
+        finally:
+            timer.elapsed_ms = round((time.perf_counter() - started) * 1000, 3)
+            level = (LogLevel.WARNING
+                     if threshold_ms is not None and timer.elapsed_ms > threshold_ms
+                     else LogLevel.INFO)
+            self.log(level, event, duration_ms=timer.elapsed_ms, **static_fields)
